@@ -50,7 +50,7 @@ Load content into the editor using one of these methods:
 
 ```typescript
 // Create a blank video scene
-await cesdk.actions.run('scene.create', { mode: 'Video' });
+await cesdk.actions.run('scene.create');
 
 // Load from a template archive
 await cesdk.loadFromArchiveURL('https://example.com/video-template.zip');
