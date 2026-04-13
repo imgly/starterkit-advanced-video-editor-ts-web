@@ -15,7 +15,7 @@ import { initAdvancedVideoEditor } from './imgly';
 // ============================================================================
 
 const config = {
-  userId: 'starterkit-advanced-video-editor-user',
+  userId: 'starterkit-advanced-video-editor-user'
 
   // Local assets
   // baseURL: `/assets/`,
