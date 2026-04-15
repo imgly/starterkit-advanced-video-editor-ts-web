@@ -3,8 +3,7 @@
 Full-featured video editing for your web app with an advanced desktop-style interface — multi-track timeline, layers panel, and professional export options. Built with [CE.SDK](https://img.ly/creative-sdk) by [IMG.LY](https://img.ly), runs entirely in the browser with no server dependencies.
 
 <p>
-  <a href="https://img.ly/docs/cesdk/starterkits/advanced-video-editor/">Documentation</a> |
-  <a href="https://img.ly/showcases/cesdk">Live Demo</a>
+  <a href="https://img.ly/docs/cesdk/js/starterkits/advanced-video-editor-2a68z2/">Documentation</a>
 </p>
 
 ![Advanced Video Editor starter kit showing a desktop-style video editing interface with multi-track timeline](./hero.webp)

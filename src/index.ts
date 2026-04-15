@@ -15,7 +15,7 @@ import { initAdvancedVideoEditor } from './imgly';
 // ============================================================================
 
 const config = {
-  userId: 'starterkit-advanced-video-editor-user',
+  userId: 'starterkit-advanced-video-editor-user'
 
   // Local assets
   // baseURL: `/assets/`,
@@ -31,6 +31,13 @@ CreativeEditorSDK.create('#cesdk_container', config)
     (window as any).cesdk = cesdk;
 
     await initAdvancedVideoEditor(cesdk);
+    // ============================================================================
+    // Scene Loading
+    // ============================================================================
+
+    await cesdk.loadFromArchiveURL(
+      'https://cdn.img.ly/packages/imgly/plugin-marketing-asset-source-web/1.0.0/assets/templates/animated-beauty-product.zip'
+    );
   })
   .catch((error) => {
     // eslint-disable-next-line no-console
