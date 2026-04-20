@@ -18,6 +18,7 @@ import {
   EffectsAssetSource,
   FiltersAssetSource,
   PagePresetsAssetSource,
+  PremiumTemplatesAssetSource,
   StickerAssetSource,
   TextAssetSource,
   TextComponentAssetSource,
@@ -113,6 +114,13 @@ export async function initAdvancedVideoEditor(cesdk: CreativeEditorSDK) {
   await cesdk.addPlugin(new TypefaceAssetSource());
   await cesdk.addPlugin(new VectorShapeAssetSource());
 
+  // Premium templates
+  await cesdk.addPlugin(
+    new PremiumTemplatesAssetSource({
+      include: ['ly.img.templates.premium.*']
+    })
+  );
+
   // ============================================================================
   // Navigation Bar Actions
   // ============================================================================
@@ -132,11 +140,4 @@ export async function initAdvancedVideoEditor(cesdk: CreativeEditorSDK) {
     }
   );
 
-  // ============================================================================
-  // Scene Loading
-  // ============================================================================
-
-  await cesdk.loadFromArchiveURL(
-    'https://cdn.img.ly/packages/imgly/plugin-marketing-asset-source-web/1.0.0/assets/templates/animated-beauty-product.zip'
-  );
 }
