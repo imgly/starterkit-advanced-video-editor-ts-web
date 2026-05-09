@@ -15,10 +15,12 @@ import { initAdvancedVideoEditor } from './imgly';
 // ============================================================================
 
 const config = {
-  userId: 'starterkit-advanced-video-editor-user'
+  userId: 'starterkit-advanced-video-editor-user',
 
-  // Local assets
-  // baseURL: `/assets/`,
+  // IMG.LY CDN (for quick testing only, NOT recommended for production)
+
+  // Local assets for development
+
 };
 
 // ============================================================================

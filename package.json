@@ -1,7 +1,7 @@
 {
   "name": "starterkit-advanced-video-editor",
   "version": "1.0.0",
-  "description": "CE.SDK Starterkit",
+  "description": "CE.SDK Advanced Video Editor Starterkit",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -9,7 +9,7 @@
     "check:syntax": "tsc --noEmit"
   },
   "dependencies": {
-    "@cesdk/cesdk-js": "latest",
+    "@cesdk/cesdk-js": "^1.75.0-rc.4",
     "@imgly/background-removal": "1.7.0",
     "onnxruntime-web": "1.21.0"
   },
