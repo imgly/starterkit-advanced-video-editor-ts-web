@@ -3,24 +3,12 @@
  *
  * Advanced video editing with full timeline and multi-track support.
  *
- * @see https://img.ly/docs/cesdk/js/get-started/overview-e18f40/
+ * @see https://img.ly/docs/cesdk/js/getting-started/
  */
 
 import CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import { initAdvancedVideoEditor } from './imgly';
-
-
-/**
- * Demo assets for this example (scene archives, …) are loaded from the
- * IMG.LY CDN by default. To host them yourself, copy this kit's asset
- * folder to your own CDN or server and change this constant — or set it to
- * `''` and place the files in this app's `public/` directory. No trailing
- * slash.
- */
-export const DEMO_ASSETS_BASE_URL: string =
-  import.meta.env.VITE_DEMO_ASSETS_BASE_URL ||
-  'https://staticimgly.com/imgly/cesdk-web-examples-data/1.82.0/starterkit-advanced-video-editor';
 
 // ============================================================================
 // Configuration
@@ -49,8 +37,8 @@ CreativeEditorSDK.create('#cesdk_container', config)
     // Scene Loading
     // ============================================================================
 
-    await cesdk.load(
-      `${DEMO_ASSETS_BASE_URL}/assets/templates/lunar-video-default/scene.scene`
+    await cesdk.loadFromURL(
+      'https://cdn.img.ly/packages/imgly/plugin-marketing-asset-source-web/1.0.0/assets/templates/animated-beauty-product/scene.scene'
     );
   })
   .catch((error) => {

@@ -4,7 +4,7 @@
  * This module provides the main entry point for initializing the advanced video editor.
  * Import and call `initAdvancedVideoEditor()` to configure a CE.SDK instance for advanced video editing.
  *
- * @see https://img.ly/docs/cesdk/js/get-started/overview-e18f40/
+ * @see https://img.ly/docs/cesdk/js/getting-started/
  */
 
 import type CreativeEditorSDK from '@cesdk/cesdk-js';
@@ -28,13 +28,13 @@ import {
   VectorShapeAssetSource
 } from '@cesdk/cesdk-js/plugins';
 
-import BackgroundRemovalPlugin from '@imgly/plugin-background-removal-web';
-
 // Configuration and plugins
-import { AdvancedVideoEditorConfig } from './config/plugin';
+import { AdvancedVideoEditorConfig } from '../../advanced-video-editor/plugin';
+import { setupBackgroundRemovalPlugin } from './plugins/background-removal';
 
 // Re-export for external use
-export { AdvancedVideoEditorConfig } from './config/plugin';
+export { AdvancedVideoEditorConfig } from '../../advanced-video-editor/plugin';
+export { setupBackgroundRemovalPlugin } from './plugins/background-removal';
 
 /**
  * Initialize the CE.SDK Advanced Video Editor with a complete configuration.
@@ -56,68 +56,72 @@ export async function initAdvancedVideoEditor(cesdk: CreativeEditorSDK) {
   // cesdk.setLocale('en');
 
   // ============================================================================
+  // Background Removal Plugin
+  // ============================================================================
+
+  setupBackgroundRemovalPlugin(cesdk);
+
+  // ============================================================================
   // Asset Source Plugins
   // ============================================================================
 
-  await Promise.all([
-    cesdk.addPlugin(new BlurAssetSource()),
-    cesdk.addPlugin(new CaptionPresetsAssetSource()),
-    cesdk.addPlugin(new ImageColorsAssetSource()),
-    cesdk.addPlugin(new ColorPaletteAssetSource()),
-    cesdk.addPlugin(new CropPresetsAssetSource()),
+  await cesdk.addPlugin(new BlurAssetSource());
+  await cesdk.addPlugin(new CaptionPresetsAssetSource());
+  await cesdk.addPlugin(new ImageColorsAssetSource());
+  await cesdk.addPlugin(new ColorPaletteAssetSource());
+  await cesdk.addPlugin(new CropPresetsAssetSource());
 
-    cesdk.addPlugin(
-      new UploadAssetSources({
-        include: [
-          'ly.img.image.upload',
-          'ly.img.video.upload',
-          'ly.img.audio.upload'
-        ]
-      })
-    ),
+  await cesdk.addPlugin(
+    new UploadAssetSources({
+      include: [
+        'ly.img.image.upload',
+        'ly.img.video.upload',
+        'ly.img.audio.upload'
+      ]
+    })
+  );
 
-    cesdk.addPlugin(
-      new DemoAssetSources({
-        include: [
-          'ly.img.templates.video.*',
-          'ly.img.image.*',
-          'ly.img.audio.*',
-          'ly.img.video.*'
-        ]
-      })
-    ),
+  await cesdk.addPlugin(
+    new DemoAssetSources({
+      include: [
+        'ly.img.templates.video.*',
+        'ly.img.image.*',
+        'ly.img.audio.*',
+        'ly.img.video.*'
+      ]
+    })
+  );
 
-    cesdk.addPlugin(new EffectsAssetSource()),
-    cesdk.addPlugin(new FiltersAssetSource()),
+  await cesdk.addPlugin(new EffectsAssetSource());
+  await cesdk.addPlugin(new FiltersAssetSource());
 
-    cesdk.addPlugin(
-      new PagePresetsAssetSource({
-        include: [
-          'ly.img.page.presets.instagram.*',
-          'ly.img.page.presets.facebook.*',
-          'ly.img.page.presets.x.*',
-          'ly.img.page.presets.linkedin.*',
-          'ly.img.page.presets.pinterest.*',
-          'ly.img.page.presets.tiktok.*',
-          'ly.img.page.presets.youtube.*',
-          'ly.img.page.presets.video.*'
-        ]
-      })
-    ),
+  await cesdk.addPlugin(
+    new PagePresetsAssetSource({
+      include: [
+        'ly.img.page.presets.instagram.*',
+        'ly.img.page.presets.facebook.*',
+        'ly.img.page.presets.x.*',
+        'ly.img.page.presets.linkedin.*',
+        'ly.img.page.presets.pinterest.*',
+        'ly.img.page.presets.tiktok.*',
+        'ly.img.page.presets.youtube.*',
+        'ly.img.page.presets.video.*'
+      ]
+    })
+  );
 
-    cesdk.addPlugin(new StickerAssetSource()),
-    cesdk.addPlugin(new TextAssetSource()),
-    cesdk.addPlugin(new TextComponentAssetSource()),
-    cesdk.addPlugin(new TypefaceAssetSource()),
-    cesdk.addPlugin(new VectorShapeAssetSource()),
+  await cesdk.addPlugin(new StickerAssetSource());
+  await cesdk.addPlugin(new TextAssetSource());
+  await cesdk.addPlugin(new TextComponentAssetSource());
+  await cesdk.addPlugin(new TypefaceAssetSource());
+  await cesdk.addPlugin(new VectorShapeAssetSource());
 
-    // Premium templates
-    cesdk.addPlugin(
-      new PremiumTemplatesAssetSource({
-        include: ['ly.img.templates.premium.*']
-      })
-    )
-  ]);
+  // Premium templates
+  await cesdk.addPlugin(
+    new PremiumTemplatesAssetSource({
+      include: ['ly.img.templates.premium.*']
+    })
+  );
 
   // ============================================================================
   // Navigation Bar Actions
@@ -132,21 +136,9 @@ export async function initAdvancedVideoEditor(cesdk: CreativeEditorSDK) {
         'ly.img.exportVideo.navigationBar',
         'ly.img.exportScene.navigationBar',
         'ly.img.exportArchive.navigationBar',
-        'ly.img.importScene.navigationBar'
+        'ly.img.importScene.navigationBar',
+        'ly.img.importArchive.navigationBar'
       ]
     }
-  );
-
-  // ============================================================================
-  // Background Removal Plugin
-  // ============================================================================
-
-  await cesdk.addPlugin(
-    BackgroundRemovalPlugin({
-      ui: { locations: ['canvasMenu'] },
-      provider: {
-        type: '@imgly/background-removal'
-      }
-    })
   );
 }
