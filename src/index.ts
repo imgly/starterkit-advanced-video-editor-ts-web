@@ -10,6 +10,7 @@ import CreativeEditorSDK from '@cesdk/cesdk-js';
 
 import { initAdvancedVideoEditor } from './imgly';
 
+
 /**
  * Demo assets for this example (scene archives, …) are loaded from the
  * IMG.LY CDN by default. To host them yourself, copy this kit's asset
@@ -19,7 +20,7 @@ import { initAdvancedVideoEditor } from './imgly';
  */
 export const DEMO_ASSETS_BASE_URL: string =
   import.meta.env.VITE_DEMO_ASSETS_BASE_URL ||
-  'https://staticimgly.com/imgly/cesdk-web-examples-data/1.81.1/starterkit-advanced-video-editor';
+  'https://staticimgly.com/imgly/cesdk-web-examples-data/1.82.0/starterkit-advanced-video-editor';
 
 // ============================================================================
 // Configuration
@@ -49,7 +50,7 @@ CreativeEditorSDK.create('#cesdk_container', config)
     // ============================================================================
 
     await cesdk.load(
-      `${DEMO_ASSETS_BASE_URL}/assets/templates/lunar-video-default.imgly`
+      `${DEMO_ASSETS_BASE_URL}/assets/templates/lunar-video-default/scene.scene`
     );
   })
   .catch((error) => {
