@@ -9,14 +9,14 @@
     "check:syntax": "tsc --noEmit"
   },
   "dependencies": {
-    "@cesdk/cesdk-js": "^1.82.1",
-    "@cesdk/engine": "^1.82.1",
-    "@imgly/plugin-background-removal-web": "^1.82.1",
+    "@cesdk/cesdk-js": "^1.83.0-rc.2",
+    "@cesdk/engine": "^1.83.0-rc.2",
+    "@imgly/plugin-background-removal-web": "^1.83.0-rc.2",
     "onnxruntime-web": "1.21.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "typescript": "^5.0.0",
-    "vite": "^6.0.3",
-    "@types/node": "^22.0.0"
+    "vite": "^6.0.3"
   }
 }

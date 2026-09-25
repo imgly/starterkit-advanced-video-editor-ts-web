@@ -27,9 +27,6 @@ export function setupSettings(engine: CreativeEngine): void {
   // ============================================================================
 
   // #region Video Features
-  // Enable video captions functionality
-  engine.editor.setSetting('features/videoCaptionsEnabled' as any, true);
-
   // Show all timeline tracks (clips, overlays, audio) for full multi-track editing
   engine.editor.setSetting('timeline/trackVisibility', 'all');
 
@@ -82,6 +79,9 @@ export function setupSettings(engine: CreativeEngine): void {
   // - 'Direct': Select the exact element clicked
   // - 'Hierarchical': Traverse up/down the hierarchy on each click
   engine.editor.setSetting('doubleClickSelectionMode', 'Hierarchical');
+
+  // Press and hold an image, then drag it onto another image to exchange the two.
+  engine.editor.setSetting('dragToSwapFills/enabled', true);
   // #endregion
 
   // ============================================================================
@@ -116,6 +116,15 @@ export function setupSettings(engine: CreativeEngine): void {
 
   // Highlight page boundaries when cropping for better visual feedback
   // engine.editor.setSetting('page/highlightWhenCropping', true);
+
+  // The safety margin marks where content must stay, so only its line is
+  // needed. The wash over the band reads as a second bleed margin.
+  engine.editor.setSettingColor('page/safetyFillColor', {
+    r: 0,
+    g: 0,
+    b: 0,
+    a: 0
+  });
   // #endregion
 
   // #region Page Title Settings
