@@ -19,7 +19,6 @@ import {
   EffectsAssetSource,
   FiltersAssetSource,
   PagePresetsAssetSource,
-  PremiumTemplatesAssetSource,
   StickerAssetSource,
   TextAssetSource,
   TextComponentAssetSource,
@@ -109,14 +108,7 @@ export async function initAdvancedVideoEditor(cesdk: CreativeEditorSDK) {
     cesdk.addPlugin(new TextAssetSource()),
     cesdk.addPlugin(new TextComponentAssetSource()),
     cesdk.addPlugin(new TypefaceAssetSource()),
-    cesdk.addPlugin(new VectorShapeAssetSource()),
-
-    // Premium templates
-    cesdk.addPlugin(
-      new PremiumTemplatesAssetSource({
-        include: ['ly.img.templates.premium.*']
-      })
-    )
+    cesdk.addPlugin(new VectorShapeAssetSource())
   ]);
 
   // ============================================================================
