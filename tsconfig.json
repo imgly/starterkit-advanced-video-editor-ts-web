@@ -2,14 +2,8 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "vite/client"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
     "moduleResolution": "bundler",
     "skipLibCheck": true,
     "noImplicitAny": false,
@@ -21,13 +15,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": [
-    "*.ts",
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "*.mjs",
-    "node_modules",
-    "dist"
-  ]
+  "include": ["*.ts", "src/**/*.ts"],
+  "exclude": ["*.mjs", "node_modules", "dist"]
 }
